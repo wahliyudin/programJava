@@ -1,0 +1,65 @@
+package NgisiSoal;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class SoalE {
+    public static void main(String[] args) {
+
+        Scanner inp = new Scanner(System.in);
+        String satu = inp.nextLine();
+        String dua = inp.nextLine();
+
+        String[] keSatu = satu.split(" ");
+        String[] keDua = dua.split(" ");
+
+        List<Integer> hasilKeSatu = new ArrayList<>();
+        List<Integer> hasilKeDua = new ArrayList<>();
+
+        int jumSatu = 0;
+        int jumDua = 0;
+
+        keSatu.toString();
+        keDua.toString();
+
+        for (int i=0; i < keSatu.length; i++){
+            if (keSatu[i].equals("a") && keDua[i].equals("a")){
+                continue;
+            } else if (keSatu[i].equals("a") && keDua[i].equals("h")){
+                hasilKeSatu.add(1);
+            } else if (keSatu[i].equals("a") && keDua[i].equals("e")){
+                hasilKeDua.add(1);
+            } else if (keSatu[i].equals("h") && keDua[i].equals("h")){
+                continue;
+            } else if (keSatu[i].equals("h") && keDua[i].equals("a")){
+                hasilKeDua.add(1);
+            } else if (keSatu[i].equals("h") && keDua[i].equals("e")){
+                hasilKeSatu.add(1);
+            } else if (keSatu[i].equals("e") && keDua[i].equals("e")){
+                continue;
+            } else if (keSatu[i].equals("e") && keDua[i].equals("a")){
+                hasilKeSatu.add(1);
+            } else if (keSatu[i].equals("e") && keDua[i].equals("h")){
+                hasilKeDua.add(1);
+            } else {
+                continue;
+            }
+        }
+
+        for (int s : hasilKeSatu){
+            jumSatu += s;
+        }
+        for (int d : hasilKeDua){
+            jumDua += d;
+        }
+
+        if (jumSatu > jumDua){
+            System.out.println("Ganesh Wins");
+        } else if (jumSatu < jumDua){
+            System.out.println("Eko Wins");
+        } else {
+            System.out.println("Draw");
+        }
+    }
+}
