@@ -1,0 +1,23 @@
+package NgisiSoal;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class SoalA {
+    public static void main(String[] args) {
+
+        Scanner inp = new Scanner(System.in);
+
+        List<Integer> satu = new ArrayList<>();
+
+        for (int i = 0; i < 4; i++){
+            satu.add(inp.nextInt());
+        }
+
+        int rumus = Math.abs(satu.get(0) - satu.get(2)) + Math.abs(satu.get(1) - satu.get(3));
+
+        System.out.println(rumus);
+
+    }
+}
