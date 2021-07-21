@@ -1,0 +1,26 @@
+package NgisiSoal;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class SoalB {
+    public static void main(String[] args) {
+
+        Scanner inp = new Scanner(System.in);
+        List<Long> angka = new ArrayList<>();
+        long hasil = 0;
+
+        for (int i = 0; i < 2; i++){
+            angka.add(inp.nextLong());
+        }
+
+        for (long i = angka.get(0); i < angka.get(1)+1; i++ ){
+            hasil += i;
+        }
+
+        long rumus = (hasil % (1_000_000_000 + 7));
+        System.out.println(rumus);
+
+    }
+}
