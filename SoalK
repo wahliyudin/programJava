@@ -1,0 +1,23 @@
+package NgisiSoal;
+
+import java.util.Scanner;
+
+public class SoalK {
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        String vektor = input.nextLine();
+
+        String[] resultan = vektor.split(" ");
+
+        String ucapan = resultan.length > 2 ? "MUNGKIN" : "MUSTAHIL";
+//        if (resultan.length > 2){
+//            System.out.println("MUNGKIN");
+//        } else {
+//            System.out.println("MUSTAHIL");
+//        }
+        System.out.println(ucapan);
+
+    }
+}
