@@ -1,0 +1,93 @@
+package NgisiSoal;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class Encrypt {
+    public static void main(String[] args) {
+
+        var input = new Scanner(System.in);
+        var text = input.nextLine();
+        var jangka = input.nextInt();
+
+        sandiGeser(text, jangka);
+
+    }
+
+    public static void sandiGeser(String text, Integer jangka){
+        var chars = text.toCharArray();
+        char[] huruf = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
+                'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
+        char[] simbol = {' ', '!', ',', '.', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-',
+                '_', '+', '=', '<', '>', '?', '/', '|', '\\', '~', '0', '1', '2', '3',
+                '4', '5', '6', '7', '8', '9'};
+        var syarat = new ArrayList<>();
+        var hurufUpper = new ArrayList<>();
+        var hurufLower = new ArrayList<>();
+        for (var s : simbol){
+            syarat.add(s);
+        }
+        for (var h : huruf){
+            hurufUpper.add(Character.toUpperCase(h));
+            hurufLower.add(Character.toLowerCase(h));
+        }
+        int cek;
+        if (jangka > 0){
+            cek = 1;
+        } else {
+            cek = -1;
+        }
+        for (var c : chars){
+            if (syarat.contains(c)){
+                System.out.print(c);
+            } else if (hurufUpper.contains(c)){
+                if (hurufUpper.indexOf(c) < hurufUpper.size()){
+                    try {
+                        System.out.print(hurufUpper.get(hurufUpper.indexOf(c) + jangka));
+                    } catch (Exception e){
+                        try {
+                            System.out.print(hurufUpper.get(hurufUpper.indexOf(c)-(hurufUpper.size()*cek) + jangka));
+                        } catch (Exception er){
+                            var i = 0;
+                            while (i <= 1000_000_000){
+                                try {
+                                    System.out.print(hurufUpper.get(hurufUpper.indexOf(c)- (hurufUpper.size()*cek)+jangka));
+                                    break;
+                                } catch (Exception err){
+                                    jangka -= (hurufUpper.size()*cek);
+                                    i++;
+                                }
+                            }
+                        }
+                    }
+                } else {
+                    System.out.print(hurufUpper.get(hurufUpper.indexOf(c)- (hurufUpper.size()*cek) + jangka));
+                }
+            } else if (hurufLower.contains(c)){
+                if (hurufLower.indexOf(c) < hurufLower.size()){
+                    try {
+                        System.out.print(hurufLower.get(hurufLower.indexOf(c) + jangka));
+                    } catch (Exception er){
+                        try {
+                            System.out.print(hurufLower.get(hurufLower.indexOf(c)-(hurufLower.size()*cek) + jangka));
+                        } catch (Exception err){
+                            int i = 0;
+                            while (i <= 1000_000_000){
+                                try {
+                                    System.out.print(hurufLower.get(hurufLower.indexOf(c)- (hurufLower.size()*cek)+jangka));
+                                    break;
+                                } catch (Exception erro){
+                                    jangka -= (hurufLower.size()*cek);
+                                    i++;
+                                }
+                            }
+                        }
+                    }
+                } else {
+                    System.out.print(hurufLower.get(hurufLower.indexOf(c)- (hurufLower.size()*cek) + jangka));
+                }
+            }
+        }
+    }
+}
